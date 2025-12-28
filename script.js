@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Golden Embers Particle System
+// Golden Embers Particle System with Scroll Interaction
 (function() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
@@ -240,6 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     let width, height;
     let particles = [];
+    let scrollSpeed = 0;
+    let lastScrollY = 0;
 
     function resize() {
         width = canvas.width = window.innerWidth;
@@ -254,29 +256,36 @@ document.addEventListener('DOMContentLoaded', () => {
         reset() {
             this.x = Math.random() * width;
             this.y = height + Math.random() * 100;
-            this.vx = (Math.random() - 0.5) * 0.5;
-            this.vy = -Math.random() * 1.5 - 0.5; // Slightly faster upward (0.5 to 2.0)
+            this.baseVx = (Math.random() - 0.5) * 0.2;
+            this.baseVy = -Math.random() * 0.6 - 0.2; // Base slow upward
+            this.vx = this.baseVx;
+            this.vy = this.baseVy;
             this.size = Math.random() * 3 + 1;
-            this.alpha = Math.random() * 0.5 + 0.4; // Start visible
-            this.fadeSpeed = Math.random() * 0.0005 + 0.0002; // Very slow fade
+            this.alpha = Math.random() * 0.5 + 0.4;
+            this.fadeSpeed = Math.random() * 0.0002 + 0.00005;
             this.color = Math.random() > 0.5 ? '212, 168, 79' : '139, 69, 19';
         }
 
         update() {
+            // Apply scroll influence to velocity
+            this.vy = this.baseVy - scrollSpeed * 0.1;
+            this.vx = this.baseVx + (Math.random() - 0.5) * Math.abs(scrollSpeed) * 0.05;
+
             this.x += this.vx;
             this.y += this.vy;
             
-            // Fade primarily based on height to ensure top coverage
+            // Fade based on height
             if (this.y < height * 0.2) {
-                 this.alpha -= 0.005; // Fade faster only near top
+                 this.alpha -= 0.003;
             } else {
-                 this.alpha -= this.fadeSpeed; // Slow fade otherwise
-            }        
+                 this.alpha -= this.fadeSpeed;
+            }
 
             // Sway effect
-            this.x += Math.sin(this.y * 0.01) * 0.1;
+            this.x += Math.sin(this.y * 0.005) * 0.05;
 
-            if (this.alpha <= 0 || this.y < -10) {
+            // Reset if off screen or faded
+            if (this.alpha <= 0 || this.y < -10 || this.y > height + 50) {
                 this.reset();
             }
         }
@@ -295,10 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function init() {
         resize();
+        particles = [];
         const particleCount = window.innerWidth < 600 ? 50 : 100;
         for (let i = 0; i < particleCount; i++) {
             const p = new Particle();
-            p.y = Math.random() * height; // Initial random spread
+            p.y = Math.random() * height;
             particles.push(p);
         }
         animate();
@@ -306,6 +316,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
+        
+        // Decay scroll speed over time for smooth effect
+        scrollSpeed *= 0.95;
+        
         particles.forEach(p => {
             p.update();
             p.draw();
@@ -313,11 +327,18 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animate);
     }
 
+    // Scroll listener to capture scroll speed
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        scrollSpeed = currentScrollY - lastScrollY;
+        lastScrollY = currentScrollY;
+    });
+
     window.addEventListener('resize', () => {
         resize();
-        particles = [];
         init();
     });
 
     init();
 })();
+
