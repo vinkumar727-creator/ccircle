@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Chakhna Circle - A premium subscription-based social club for gourmet starters, soulful Shayari, and live entertainment. Join our exclusive circle.">
+    <title>Chakhna Circle | The Circle is Forming</title>
+    <link rel="icon" type="image/png" href="images/chakhna_logo.png">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Age Verification Modal -->
+    <div id="age-modal" class="age-modal">
+        <div class="age-modal-backdrop"></div>
+        <div class="age-modal-content">
+            <div class="age-modal-logo">
+                <img src="images/chakhna_logo.png" alt="Chakhna Circle" class="logo-img-large">
+                <h2>Chakhna Circle</h2>
+            </div>
+            <div class="age-modal-divider"></div>
+            <h3>Are you 21 or older?</h3>
+            <p>This website contains content intended for adults who are of legal drinking age.</p>
+            <div class="age-modal-buttons">
+                <button id="age-yes" class="btn btn-primary">Yes, I am 21+</button>
+                <button id="age-no" class="btn btn-secondary">No, I am under 21</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Underage Message -->
+    <div id="underage-message" class="underage-message hidden">
+        <div class="underage-content">
+            <img src="images/chakhna_logo.png" alt="Chakhna Circle" class="logo-img-large">
+            <h2>We're Sorry</h2>
+            <p>You must be 21 or older to access this website.</p>
+            <p class="underage-note">Please come back when you're of legal age.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content hidden">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="nav-logo">
+                    <img src="images/chakhna_logo.png" alt="Chakhna Circle" class="logo-img">
+                    <span class="logo-text">Chakhna Circle</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#concept">The Concept</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#membership">Membership</a></li>
+                </ul>
+                <a href="#waitlist" class="btn btn-nav">Join Waitlist</a>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <ul class="mobile-nav-links">
+                <li><a href="#concept">The Concept</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#waitlist" class="btn btn-primary">Join Waitlist</a></li>
+            </ul>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <div class="hero-gradient"></div>
+                <div class="hero-grain"></div>
+                <div class="hero-glow glow-1"></div>
+                <div class="hero-glow glow-2"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge animate-fade-in">
+                    <span>Exclusive Social Club</span>
+                </div>
+                <h1 class="hero-title animate-fade-in-up">
+                    The Circle is <span class="text-gradient">Forming</span>
+                </h1>
+                <p class="hero-subtitle animate-fade-in-up delay-1">
+                    Gourmet Starters. Soulful Shayari. Your Inner Circle.
+                </p>
+                <div class="hero-cta animate-fade-in-up delay-2" id="waitlist">
+                    <form class="waitlist-form" id="waitlist-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary btn-glow">Join the Waitlist</button>
+                    </form>
+                    <p class="hero-note">Be the first to know when we launch</p>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <span>Scroll to Explore</span>
+                <div class="scroll-indicator"></div>
+            </div>
+        </section>
+
+        <!-- Concept Section -->
+        <section class="concept" id="concept">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">The Experience</span>
+                    <h2 class="section-title">Three Pillars of <span class="text-gradient">Indulgence</span></h2>
+                    <p class="section-subtitle">Where culinary artistry meets cultural expression</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <!-- Pillar 1: Chef-Crafted Chakhna -->
+                    <div class="pillar-card" data-animate>
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M32 8C32 8 16 16 16 32C16 40 20 48 32 56C44 48 48 40 48 32C48 16 32 8 32 8Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M32 20V44" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <path d="M24 28H40" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <path d="M26 36H38" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <h3>Chef-Crafted Chakhna</h3>
+                        <p>Elevated bar snacks reimagined by master chefs. From truffle-infused pakoras to artisanal
+                            kebabs, each bite is a celebration of Indian flavors with a gourmet twist.</p>
+                        <div class="pillar-accent"></div>
+                    </div>
+
+                    <!-- Pillar 2: Live Art -->
+                    <div class="pillar-card featured" data-animate>
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M32 8L36 20H48L38 28L42 40L32 32L22 40L26 28L16 20H28L32 8Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M20 48C20 48 26 44 32 44C38 44 44 48 44 48" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" />
+                                <path d="M24 54H40" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <h3>Live Art</h3>
+                        <p class="pillar-highlight">Shayari & Music</p>
+                        <p>Immerse yourself in the timeless beauty of Urdu poetry and soulful acoustic melodies. Our
+                            curated performances blend tradition with contemporary expression.</p>
+                        <div class="pillar-accent"></div>
+                    </div>
+
+                    <!-- Pillar 3: Mobile & Fixed Outlets -->
+                    <div class="pillar-card" data-animate>
+                        <div class="pillar-icon">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="12" y="20" width="40" height="28" rx="4" stroke="currentColor"
+                                    stroke-width="2" />
+                                <circle cx="22" cy="52" r="4" stroke="currentColor" stroke-width="2" />
+                                <circle cx="42" cy="52" r="4" stroke="currentColor" stroke-width="2" />
+                                <path d="M20 32H44" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <path d="M20 38H36" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <h3>Mobile & Fixed Outlets</h3>
+                        <p>Experience the Circle wherever you are. Our fixed lounges offer a premium retreat, while our
+                            mobile units bring the experience to your private events and gatherings.</p>
+                        <div class="pillar-accent"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Our Models</span>
+                    <h2 class="section-title">Two Ways to <span class="text-gradient">Experience</span></h2>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Fixed Lounges -->
+                    <div class="service-card" data-animate>
+                        <div class="service-image">
+                            <div class="service-image-placeholder lounge-bg">
+                                <div class="image-overlay"></div>
+                                <span class="service-badge">Coming Soon</span>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Fixed Lounges</h3>
+                            <p>Step into our intimate, thoughtfully designed spaces where every detail speaks of refined
+                                taste. Our lounges are sanctuaries for the discerning—where the clink of glasses mingles
+                                with poetry and laughter.</p>
+                            <ul class="service-features">
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>Reserved seating for members</span>
+                                </li>
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>Weekly live performances</span>
+                                </li>
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>Seasonal chef's tasting menus</span>
+                                </li>
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>Private event spaces</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Chakhna-on-Wheels -->
+                    <div class="service-card reverse" data-animate>
+                        <div class="service-image">
+                            <div class="service-image-placeholder wheels-bg">
+                                <div class="image-overlay"></div>
+                                <span class="service-badge">Launching 2026</span>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>Chakhna-on-Wheels</h3>
+                            <p>The Circle comes to you. Our premium mobile units transform any venue into an exclusive
+                                experience—perfect for corporate gatherings, celebrations, and private soirées.</p>
+                            <ul class="service-features">
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>Fully equipped mobile kitchens</span>
+                                </li>
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>On-site chef & entertainment</span>
+                                </li>
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>Customizable menus</span>
+                                </li>
+                                <li>
+                                    <span class="feature-icon">✦</span>
+                                    <span>Corporate & private bookings</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Membership Section -->
+        <section class="membership" id="membership">
+            <div class="membership-bg">
+                <div class="membership-gradient"></div>
+                <div class="membership-glow"></div>
+            </div>
+            <div class="container">
+                <div class="membership-content">
+                    <span class="section-tag">Exclusive Access</span>
+                    <h2 class="section-title">Membership Tiers <span class="text-gradient">Unveiled</span></h2>
+                    <p class="membership-text">We're crafting three distinct membership experiences—each designed to
+                        match your lifestyle and love for the finer things.</p>
+
+                    <div class="membership-preview">
+                        <div class="tier-teaser" data-tier="silver" data-animate>
+                            <div class="tier-icon">◇</div>
+                            <span>Silver Circle</span>
+                        </div>
+                        <div class="tier-teaser featured" data-tier="gold" data-animate>
+                            <div class="tier-icon">◈</div>
+                            <span>Gold Circle</span>
+                        </div>
+                        <div class="tier-teaser" data-tier="platinum" data-animate>
+                            <div class="tier-icon">❖</div>
+                            <span>Platinum Circle</span>
+                        </div>
+                    </div>
+
+                    <div id="tier-benefits-display" class="tier-benefits-display">
+                        <p class="tier-instruction">Hover or click a circle to reveal benefits</p>
+                    </div>
+
+                    <!-- Benefits Comparison Table -->
+                    <div class="benefits-table" data-animate>
+                        <h3 class="benefits-title">Compare Benefits</h3>
+                        <div class="benefits-grid">
+                            <div class="benefit-row header">
+                                <span>Benefit</span>
+                                <span>Silver</span>
+                                <span>Gold</span>
+                                <span>Platinum</span>
+                            </div>
+                            <div class="benefit-row">
+                                <span>Mobile Unit Access</span>
+                                <span class="check">✓</span>
+                                <span class="check">✓</span>
+                                <span class="check">✓</span>
+                            </div>
+                            <div class="benefit-row">
+                                <span>Lounge Access</span>
+                                <span class="dash">—</span>
+                                <span class="check">✓</span>
+                                <span class="check">✓</span>
+                            </div>
+                            <div class="benefit-row">
+                                <span>Live Shows per Month</span>
+                                <span>1</span>
+                                <span>2</span>
+                                <span>Unlimited</span>
+                            </div>
+                            <div class="benefit-row">
+                                <span>Private Event Bookings</span>
+                                <span class="dash">—</span>
+                                <span class="dash">—</span>
+                                <span class="check">✓</span>
+                            </div>
+                            <div class="benefit-row">
+                                <span>Priority Reservations</span>
+                                <span class="dash">—</span>
+                                <span class="check">✓</span>
+                                <span class="check">✓</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="launch-badge" data-animate>
+                        <div class="launch-badge-content">
+                            <span class="launch-label">Launching</span>
+                            <span class="launch-date">February 2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Countdown Timer -->
+                    <div class="countdown-section" data-animate>
+                        <p class="countdown-label">Time until launch</p>
+                        <div class="countdown-timer" id="countdown">
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="days">000</span>
+                                <span class="countdown-unit">Days</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="hours">00</span>
+                                <span class="countdown-unit">Hours</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="minutes">00</span>
+                                <span class="countdown-unit">Minutes</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="seconds">00</span>
+                                <span class="countdown-unit">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Founder Benefit Highlight -->
+                    <div class="founder-benefit" data-animate>
+                        <span class="founder-badge">🎁 Founder Benefit</span>
+                        <p>Lifetime <strong>10% discount</strong> for the first 500 members</p>
+                    </div>
+
+                    <p class="membership-cta-text">Join the waitlist to get early access and founder benefits</p>
+                    <a href="#waitlist" class="btn btn-primary btn-large btn-glow">Secure Your Spot</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vibe Quotes Section -->
+        <section class="quotes-section">
+            <div class="container">
+                <div class="quotes-wrapper">
+                    <div class="quote-card" data-animate>
+                        <div class="quote-mark">"</div>
+                        <p class="quote-text">A drink is just a liquid; the Chakhna and the Shayari are the soul.</p>
+                        <span class="quote-author">— The Circle Philosophy</span>
+                    </div>
+                    <div class="quote-card" data-animate>
+                        <div class="quote-mark">"</div>
+                        <p class="quote-text">Where strangers become friends over shared plates and poetry.</p>
+                        <span class="quote-author">— Anonymous Member</span>
+                    </div>
+                    <div class="quote-card" data-animate>
+                        <div class="quote-mark">"</div>
+                        <p class="quote-text">Every bite tells a story, every verse touches the heart.</p>
+                        <span class="quote-author">— Chef's Motto</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Follow the Journey Section -->
+        <section class="instagram-section" id="follow">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Behind the Scenes</span>
+                    <h2 class="section-title">Follow the <span class="text-gradient">Journey</span></h2>
+                    <p class="section-subtitle">Sneak peeks of our mobile van, gourmet preparations, and upcoming events
+                    </p>
+                </div>
+                <div class="instagram-grid">
+                    <div class="insta-card" data-animate>
+                        <div class="insta-placeholder">
+                            <span>🍢</span>
+                            <p>Gourmet Chakhna</p>
+                        </div>
+                    </div>
+                    <div class="insta-card" data-animate>
+                        <div class="insta-placeholder">
+                            <span>🚐</span>
+                            <p>Mobile Kitchen</p>
+                        </div>
+                    </div>
+                    <div class="insta-card" data-animate>
+                        <div class="insta-placeholder">
+                            <span>🎸</span>
+                            <p>Live Sessions</p>
+                        </div>
+                    </div>
+                    <div class="insta-card" data-animate>
+                        <div class="insta-placeholder">
+                            <span>✨</span>
+                            <p>Coming Soon</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://instagram.com" target="_blank" class="btn btn-secondary instagram-btn">
+                    <span>@chakhnacircle</span> — Follow Us
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <a href="#" class="footer-logo">
+                            <img src="images/chakhna_logo.png" alt="Chakhna Circle" class="logo-img">
+                            <span class="logo-text">Chakhna Circle</span>
+                        </a>
+                        <p class="footer-tagline">Where every evening becomes a celebration</p>
+                    </div>
+
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#concept">The Concept</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#membership">Membership</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Connect</h4>
+                            <ul>
+                                <li><a href="#">Instagram</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-disclaimer">
+                    <p><strong>Legal Disclaimer:</strong> We do not sell alcohol. We provide food and entertainment for
+                        responsible adults. All guests must be 21 years or older. Drink responsibly.</p>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Chakhna Circle. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-of-service.html">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
