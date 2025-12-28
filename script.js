@@ -144,7 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Countdown Timer
     function initCountdown() {
-        const launchDate = new Date('February 1, 2026 00:00:00').getTime();
+        // Use ISO 8601 format for cross-browser/server compatibility
+        const launchDate = new Date('2026-02-01T00:00:00').getTime();
         
         function updateCountdown() {
             const now = new Date().getTime();
