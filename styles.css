@@ -1752,3 +1752,43 @@ html {
     margin-bottom: var(--spacing-xl);
     font-size: 1.1rem;
 }
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--color-gold-primary), var(--color-gold-dark));
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-base);
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(212, 168, 79, 0.3);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold-primary));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(212, 168, 79, 0.4);
+}
+
+.scroll-to-top svg {
+    color: var(--color-bg-primary);
+    width: 24px;
+    height: 24px;
+}

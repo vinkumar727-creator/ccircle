@@ -343,3 +343,25 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 })();
 
+// Scroll to Top Button
+(function() {
+    const scrollBtn = document.getElementById('scroll-to-top');
+    if (!scrollBtn) return;
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            scrollBtn.classList.add('visible');
+        } else {
+            scrollBtn.classList.remove('visible');
+        }
+    });
+
+    // Smooth scroll to top on click
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+})();
